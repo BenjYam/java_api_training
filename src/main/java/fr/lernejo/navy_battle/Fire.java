@@ -12,12 +12,10 @@ public class Fire {
         this.consequence = consequence;
         this.shipLeft = shipLeft;
     }
-
-    public boolean getShipLeft() {
-        return shipLeft;
-    }
-
     public String getConsequence() {
         return consequence;
     }
+
+    public boolean getShipLeft() { return shipLeft; }
+
 }

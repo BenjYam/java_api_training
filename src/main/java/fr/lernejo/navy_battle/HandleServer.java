@@ -3,15 +3,14 @@ package fr.lernejo.navy_battle;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sun.net.httpserver.HttpServer;
-
-import static java.lang.System.exit;
+import java.net.http.HttpResponse;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.net.URISyntaxException;
 import java.util.UUID;
+
 import java.util.concurrent.Executors;
-import java.net.http.HttpResponse;
 import java.util.HashMap;
 
 
@@ -38,11 +37,14 @@ public class HandleServer {
         HttpResponse<String> answ = new HandleRequest().mPost(url, object.writeValueAsString(serv));
         if (answ.statusCode() == 202) {
             ServerInformation rServ = object.readValue(answ.body(), ServerInformation.class);
+            setadv("url", rServ.getUrl());
+            setadv("id", rServ.getId());
         }
     }
 
+
+    public void setadv(String key, String value){ this.enemy.put(key, value); }
     public int getPort() { return this.port; }
-    public void setEnemy(String key, String value){ this.enemy.put(key, value); }
 
 
 }
