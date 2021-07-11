@@ -21,8 +21,8 @@ class Sgame implements HttpHandler {
             req.notFound(exchange);
         try {
             ServerInformation rServ = object.readValue(req.getJsonString(exchange), ServerInformation.class);
-            this.server.setEnemy("id", rServ.getId());
-            this.server.setEnemy("url", rServ.getUrl());
+            this.server.setadv("id", rServ.getId());
+            this.server.setadv("url", rServ.getUrl());
             ServerInformation myServ = new ServerInformation(UUID.randomUUID().toString(), "http://localhost:" + server.getPort(), "may the force be with you");
             String answ = object.writeValueAsString(myServ);
             req.sendAnsw(exchange, answ, true);
