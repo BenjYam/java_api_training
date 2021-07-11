@@ -29,6 +29,7 @@ public class HandleServer {
         HttpServer server = HttpServer.create(add, 0);
         server.setExecutor(Executors.newSingleThreadExecutor());
         server.createContext("/ping", new Ping());
+        server.createContext("/api/game/start", new Sgame(this));
         server.start();
         this.port = port;
     }
@@ -41,6 +42,7 @@ public class HandleServer {
     }
 
     public int getPort() { return this.port; }
+    public void setEnemy(String key, String value){ this.enemy.put(key, value); }
 
 
 }

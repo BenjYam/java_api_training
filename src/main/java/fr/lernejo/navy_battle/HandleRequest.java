@@ -40,11 +40,11 @@ public class HandleRequest {
         return answ;
     }
 
-    public void sendResponse(HttpExchange exchange, String response, boolean header) throws IOException {
+    public void sendAnsw(HttpExchange exchange, String response, boolean header) throws IOException {
         if (header)
             exchange.getResponseHeaders().set("Content-Type", "application/json");
-        exchange.sendResponseHeaders(202, response.length());
         exchange.getResponseHeaders().set("Accept", "application/json");
+        exchange.sendResponseHeaders(202, response.length());
         try (OutputStream os = exchange.getResponseBody()) { os.write(response.getBytes()); }
     }
 }
